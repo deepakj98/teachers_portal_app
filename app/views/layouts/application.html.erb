@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TeachersPortalApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if current_teacher %>
+      <%= button_to "Log out", logout_path, method: :delete, style: "background-color: #f44336; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;" %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

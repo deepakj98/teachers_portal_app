@@ -1,0 +1,32 @@
+<h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Students</h1>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <%= link_to "Add New Student", new_student_path, style: "background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; text-decoration: none; cursor: pointer;" %>
+</div>
+
+<table style="width: 80%; margin: 0 auto; border-collapse: collapse; font-family: Arial, sans-serif;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th style="border: 1px solid #ddd; padding: 8px;">Name</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Subject</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Marks</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <% student.student_records.each do |record| %>
+        <tr style="text-align: center;">
+          <td style="border: 1px solid #ddd; padding: 8px;"><%= student.name %></td>
+          <td style="border: 1px solid #ddd; padding: 8px;"><%= record.subject %></td>
+          <td style="border: 1px solid #ddd; padding: 8px;"><%= record.marks %></td>
+          <td style="border: 1px solid #ddd; padding: 8px;">
+            <%= link_to "Edit", edit_student_path(student), style: "color: #4CAF50; text-decoration: none; margin-right: 10px;" %>
+            |
+            <%= button_to "Delete", student_path(student), method: :delete, data: { confirm: "Are you sure?" }, style: "color: red; text-decoration: none; margin-left: 10px;" %>
+          </td>
+        </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>

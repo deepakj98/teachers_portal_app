@@ -1,0 +1,27 @@
+<h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Login</h1>
+
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f5f5f5;">
+  <div style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 300px;">
+    <%= form_with url: login_path, method: :post, style: "display: flex; flex-direction: column;" do %>
+
+      <div style="margin-bottom: 15px;">
+        <%= label_tag :email, "Email", style: "font-weight: bold;" %>
+        <%= text_field_tag :email, nil, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <%= label_tag :password, "Password", style: "font-weight: bold;" %>
+        <%= password_field_tag :password, nil, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+      </div>
+
+      <div style="text-align: center;">
+        <%= submit_tag "Login", style: "background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%;" %>
+      </div>
+
+    <% end %>
+
+    <div style="text-align: center; margin-top: 15px;">
+      <%= link_to "Sign Up", signup_path, style: "color: #4CAF50; text-decoration: none;" %>
+    </div>
+  </div>
+</div>

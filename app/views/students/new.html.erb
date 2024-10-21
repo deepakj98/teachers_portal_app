@@ -1,0 +1,34 @@
+<div style="display: flex; justify-content: center; align-items: center; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5);">
+  <div style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 300px; position: relative;">
+    
+    <!-- Close button positioned inside the modal, above the heading -->
+    <div style="position: relative;">
+      <%= link_to "x", teacher_home_path, style: "position: absolute; top: -10px; right: -10px; background-color: #ff5c5c; color: white; font-size: 20px; border-radius: 50%; width: 30px; height: 30px; text-align: center; line-height: 30px; text-decoration: none;" %>
+    </div>
+
+    <h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Add New Student</h1>
+
+    <%= form_with model: @student, url: students_path, method: :post, style: "display: flex; flex-direction: column;" do |f| %>
+
+      <div style="margin-bottom: 15px;">
+        <%= f.label :name, "Name", style: "font-weight: bold;" %>
+        <%= f.text_field :name, required: true, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <%= label_tag :subject, "Subject", style: "font-weight: bold;" %>
+        <%= text_field_tag :subject, '', required: true, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <%= label_tag :marks, "Marks", style: "font-weight: bold;" %>
+        <%= number_field_tag :marks, '', required: true, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+      </div>
+
+      <div style="text-align: center;">
+        <%= f.submit "Add", style: "background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%;" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
