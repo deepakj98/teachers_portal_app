@@ -1,34 +1,34 @@
 <h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Sign Up</h1>
 
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f5f5f5;">
-  <div style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 300px;">
-    <%= form_with model: @teacher, url: teachers_path, method: :post, style: "display: flex; flex-direction: column;" do |f| %>
+<div class="sign_up_page">
+  <div class="signup_wrap">
+    <%= form_with model: @teacher, url: teachers_path, method: :post, class: "signup_form" do |f| %>
 
-      <div style="margin-bottom: 15px;">
+      <div class="field_wrap">
         <%= f.label :name, "Name", style: "font-weight: bold;" %>
-        <%= f.text_field :name, required: true, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+        <%= f.text_field :name, required: true, class:"input_field" %>
       </div>
 
-      <div style="margin-bottom: 15px;">
+      <div class="field_wrap">
         <%= f.label :email, "Email", style: "font-weight: bold;" %>
-        <%= f.email_field :email, required: true, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+        <%= f.email_field :email, required: true, class:"input_field" %>
       </div>
 
-      <div style="margin-bottom: 15px;">
+      <div class="field_wrap">
         <%= f.label :password, "Password", style: "font-weight: bold;" %>
-        <%= f.password_field :password, required: true, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+        <%= f.password_field :password, required: true, class:"input_field" %>
       </div>
 
-      <div style="margin-bottom: 15px;">
+      <div class="field_wrap">
         <%= f.label :password_confirmation, "Confirm Password", style: "font-weight: bold;" %>
-        <%= f.password_field :password_confirmation, required: true, style: "width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px;" %>
+        <%= f.password_field :password_confirmation, required: true, class:"input_field" %>
       </div>
 
       <div style="text-align: center;">
-        <%= f.submit "Sign Up", style: "background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%;" %>
+        <%= f.submit "Sign Up", class:"submit_btn" %>
       </div>
-      <div style="text-align: center; margin-top: 15px;">
-        <%= link_to "Login", root_path, style: "color: #4CAF50; text-decoration: none;" %>
+      <div class="login_btn_wrap">
+        <%= link_to "Login", root_path, class: "login_btn" %>
       </div>
 
     <% end %>

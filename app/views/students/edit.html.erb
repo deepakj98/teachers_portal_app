@@ -1,0 +1,28 @@
+<div class="new_student_record">
+  <div class="student_modal">
+    
+    <div style="position: relative;">
+      <%= link_to "x", teacher_home_path, class: "new_student_record_close_btn" %>
+    </div>
+
+    <h1 class="heading">Edit</h1>
+
+    <%= form_tag student_path, method: :put, class: "new_student_form" do %>
+      <div class="field_wrap">
+        <%= hidden_field_tag :student_record_id, @student_record.id %>
+        <%= label_tag :subject, "Subject", style: "font-weight: bold;" %>
+        <%= text_field_tag :subject, @student_record.subject, required: true, class:"input_field" %>
+      </div>
+
+      <div class="field_wrap">
+        <%= label_tag :marks, "Marks", style: "font-weight: bold;" %>
+        <%= number_field_tag :marks, @student_record.marks, min:0, max:100, required: true, class:"input_field" %>
+      </div>
+
+      <div style="text-align: center;">
+        <%= submit_tag "Update", class:"form_submit_btn" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

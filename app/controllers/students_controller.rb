@@ -1,5 +1,4 @@
 class StudentsController < ApplicationController
-  before_action :require_teacher
   before_action :set_student, only: [:edit, :update, :destroy]
 
   def index
@@ -22,10 +21,13 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    @student = Student.find_by(id: params[:id])
+    @student_record = StudentRecord.find_by(id: params[:student_record_id])
   end
 
   def update
-    if @student.update(student_params)
+    @student_record = StudentRecord.find_by(id: params[:student_record_id])
+    if @student_record.update(subject: params[:subject], marks: params[:marks])
       redirect_to teacher_home_path, notice: "Student updated successfully"
     else
       render :edit
@@ -33,7 +35,8 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @student.destroy
+    @student_record = StudentRecord.find_by(id: params[:student_record_id])
+    @student_record.destroy
     redirect_to teacher_home_path, notice: "Student deleted successfully"
   end
 

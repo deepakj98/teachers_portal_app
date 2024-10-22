@@ -12,7 +12,7 @@
 
   <body>
     <% if current_teacher %>
-      <%= button_to "Log out", logout_path, method: :delete, style: "background-color: #f44336; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;" %>
+      <%= button_to "Log out", logout_path, method: :delete, class: "logout_btn" %>
     <% end %>
     <%= yield %>
   </body>
