@@ -1,4 +1,4 @@
-<div class="new_student_record">
+<div id="edit-student-record" class="new_student_record">
   <div class="student_modal">
     
     <div style="position: relative;">
@@ -8,6 +8,12 @@
     <h1 class="heading">Edit</h1>
 
     <%= form_tag student_path, method: :put, class: "new_student_form" do %>
+      <div class= "field_wrap">
+        <div class="input_field" style="text-align: center; font-size: 20px;">
+          <b><%= @student.name %><b>
+        </div>
+      </div>
+
       <div class="field_wrap">
         <%= hidden_field_tag :student_record_id, @student_record.id %>
         <%= label_tag :subject, "Subject", style: "font-weight: bold;" %>

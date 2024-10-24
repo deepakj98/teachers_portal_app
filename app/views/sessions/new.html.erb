@@ -1,27 +1,28 @@
-<h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Login</h1>
+<div id="new-session-page">
+  <h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Login</h1>
+  <div class="session_create_page">
+    <div class="session_create_wrap">
+      <%= form_with url: login_path, method: :post, class: "login_form" do %>
 
-<div class="session_create_page">
-  <div class="session_create_wrap">
-    <%= form_with url: login_path, method: :post, class: "login_form" do %>
+        <div class="field_wrap">
+          <%= label_tag :email, "Email", style: "font-weight: bold;" %>
+          <%= text_field_tag :email, nil, required: true, class: "input_field" %>
+        </div>
 
-      <div class="field_wrap">
-        <%= label_tag :email, "Email", style: "font-weight: bold;" %>
-        <%= text_field_tag :email, nil, required: true, class: "input_field" %>
+        <div class="field_wrap">
+          <%= label_tag :password, "Password", style: "font-weight: bold;" %>
+          <%= password_field_tag :password, nil,  required: true, class: "input_field" %>
+        </div>
+        <div id="login-error"></div>
+        <div style="text-align: center;">
+          <%= submit_tag "Login", class: "submit_form" %>
+        </div>
+
+      <% end %>
+
+      <div class="signup_wrap">
+        <%= link_to "Sign Up", signup_path, class: "signup_btn" %>
       </div>
-
-      <div class="field_wrap">
-        <%= label_tag :password, "Password", style: "font-weight: bold;" %>
-        <%= password_field_tag :password, nil,  required: true, class: "input_field" %>
-      </div>
-
-      <div style="text-align: center;">
-        <%= submit_tag "Login", class: "submit_form" %>
-      </div>
-
-    <% end %>
-
-    <div class="signup_wrap">
-      <%= link_to "Sign Up", signup_path, class: "signup_btn" %>
     </div>
   </div>
-</div>
+</div

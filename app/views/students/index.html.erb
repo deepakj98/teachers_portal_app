@@ -1,32 +1,36 @@
-<h1 class="student_record_heading">Students</h1>
+<div>
+  <h1 class="student_record_heading">Students</h1>
 
-<div class="student_record_wrap">
-  <%= link_to "Add New Student", new_student_path, class: "heading" %>
+  <div class="student_record_wrap">
+    <%= link_to "Add New Student", new_student_path, class: "heading", data: {turbo_stream: true} %>
+  </div>
+
+  <table class="student_record_table">
+    <thead>
+      <tr class="table_row">
+        <th class="row_data">Name</th>
+        <th class="row_data">Subject</th>
+        <th class="row_data">Marks</th>
+        <th class="row_data">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <% student.student_records.each do |record| %>
+          <tr style="text-align: center;">
+            <td class="row_data"><%= student.name %></td>
+            <td class="row_data"><%= record.subject %></td>
+            <td class="row_data"><%= record.marks %></td>
+            <td class="row_data">
+              <%= link_to "Edit", edit_student_path(student, student_record_id: record.id), class: "edit_btn", data: {turbo_stream: true} %>
+              |
+              <%= button_to "Delete", student_path(student, student_record_id: record.id), method: :delete, data: { confirm: "Are you sure?" }, class: "delete_btn" %>
+            </td>
+          </tr>
+          <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <div id="new-student-page"></div>
+  <div id="edit-student-record"></div>
 </div>
-
-<table class="student_record_table">
-  <thead>
-    <tr class="table_row">
-      <th class="row_data">Name</th>
-      <th class="row_data">Subject</th>
-      <th class="row_data">Marks</th>
-      <th class="row_data">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |student| %>
-      <% student.student_records.each do |record| %>
-        <tr style="text-align: center;">
-          <td class="row_data"><%= student.name %></td>
-          <td class="row_data"><%= record.subject %></td>
-          <td class="row_data"><%= record.marks %></td>
-          <td class="row_data">
-            <%= link_to "Edit", edit_student_path(student, student_record_id: record.id), class: "edit_btn" %>
-            |
-            <%= button_to "Delete", student_path(student, student_record_id: record.id), method: :delete, data: { confirm: "Are you sure?" }, class: "delete_btn" %>
-          </td>
-        </tr>
-        <% end %>
-    <% end %>
-  </tbody>
-</table>

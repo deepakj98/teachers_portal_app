@@ -8,8 +8,11 @@ class SessionsController < ApplicationController
       session[:teacher_id] = teacher.id
       redirect_to teacher_home_path, notice: "Logged in successfully"
     else
-      flash[:alert] = "Invalid email or password"
-      render :new
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace('login-error', partial: "sessions/login_error")
+        end
+      end
     end
   end
 

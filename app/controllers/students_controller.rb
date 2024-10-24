@@ -7,6 +7,12 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("new-student-page", partial: "students/add_new_student", student: @student)
+      end
+    end
   end
 
   def create
@@ -23,6 +29,12 @@ class StudentsController < ApplicationController
   def edit
     @student = Student.find_by(id: params[:id])
     @student_record = StudentRecord.find_by(id: params[:student_record_id])
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("edit-student-record", partial: "students/edit_student_record", student: @student, student_record: @student_record)
+      end
+    end
   end
 
   def update
