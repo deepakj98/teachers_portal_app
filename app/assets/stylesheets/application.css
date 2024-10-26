@@ -252,3 +252,16 @@
     border-radius: 4px;
     cursor: pointer;
  }
+
+ .login_error_wrap {
+    color: red;
+    font-size: 20px;
+    margin: 5px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .forget_password_link{
+        text-decoration: none;
+    }
+ }

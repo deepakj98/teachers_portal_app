@@ -16,9 +16,9 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = current_teacher.students.find_or_create_by(name: params[:student][:name])
+    @student = current_teacher.students.find_or_create_by(name: params[:student][:name].downcase)
     if @student
-      @student_record = @student.student_records.find_or_create_by(subject: params[:subject])
+      @student_record = @student.student_records.find_or_create_by(subject: params[:subject].downcase)
       @student_record.update(marks: params[:marks])
       redirect_to teacher_home_path, notice: "Student Record added successfully"
     else
@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
 
   def update
     @student_record = StudentRecord.find_by(id: params[:student_record_id])
-    if @student_record.update(subject: params[:subject], marks: params[:marks])
+    if @student_record.update(subject: params[:subject].downcase, marks: params[:marks])
       redirect_to teacher_home_path, notice: "Student updated successfully"
     else
       render :edit

@@ -1,3 +1,4 @@
-<div id="login-error" style="color: red; font-size: 20px; margin: 5px;">
+<div id="login-error" class="login_error_wrap">
     wrong credentials
+    <div><%= link_to "forget password", forget_password_path, class:"forget_password_link", data: {turbo_stream: true} %></div>
 </div>

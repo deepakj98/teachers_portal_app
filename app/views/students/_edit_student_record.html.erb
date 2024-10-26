@@ -10,7 +10,7 @@
     <%= form_tag student_path, method: :put, class: "new_student_form" do %>
       <div class= "field_wrap">
         <div class="input_field" style="text-align: center; font-size: 20px;">
-          <b><%= @student.name %><b>
+          <b><%= @student.name.capitalize %><b>
         </div>
       </div>
 
